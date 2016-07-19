@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------------------
+// Imports
+@import "compass/reset";
+@import "compass";
+@import "susy";
+@import "typography";
+@import "color";
+
+
+// ---------------------------------------------------------------------------
+// Basic Grid
+
+$total-columns  : 8;
+$column-width   : 4em;
+$gutter-width   : 1em;
+$grid-padding   : 0;
+
+$break-medium: 12;
+$break-large: 16;
+
+$show-grid-backgrounds  : true;

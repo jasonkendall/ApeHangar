@@ -1,0 +1,39 @@
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+// Define our fonts
+@include font-face('Cabin', 
+  font-files(
+    'Cabin-Regular-webfont.woff', woff,
+    'Cabin-Regular-webfont.ttf', ttf,
+    'Cabin-Regular-webfont.svg', svg),
+    'Cabin-Regular-webfont.eot');
+
+@include font-face('Cabin-bold', 
+		font-files(
+		  'Cabin-Bold-webfont.woff', woff,
+		  'Cabin-Bold-webfont.ttf', ttf,
+		  'Cabin-Bold-webfont.svg', svg),
+		  'Cabin-Bold-webfont.eot');
+
+
+@include font-face('Ultra', 
+		font-files(
+		  'Ultra-webfont.woff', woff,
+		  'Ultra-webfont.ttf', ttf,
+		  'Ultra-webfont.svg', svg),
+		  'Ultra-webfont.eot');
+
+//Extend Placeholders - don't forget the %sign - @extend %font-name
+		%Cabin {
+		  font-family: 'Cabin', sans-serif;
+		}
+		
+		%Cabin-bold {
+			font-family: 'Cabin-bold', sans-serif;
+		}
+		
+		%Ultra {
+			font-family: 'Ultra', serif;
+			font-weight: normal;
+		}

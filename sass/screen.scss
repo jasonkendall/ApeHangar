@@ -1,0 +1,453 @@
+
+// Imports
+
+@import "base";
+
+/* -------------------------------------------------------------------------*/
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Layout */
+.page {
+  @include container($total-columns, $break-medium, $break-large);
+	background: transparent;
+	@include background-image(radial-gradient(top, ellipse cover, rgba(71,71,71,.8) 0%,rgba(255,255,255,0) 50%));
+}
+
+html {
+	background: $black url('../img/carbonfiber.jpg') repeat top center;
+}
+
+* { @include box-sizing('border-box'); }
+
+p > a {
+	color: $yellow;
+
+	&:hover {
+		color: $white;
+		text-decoration: none;
+	}
+}
+
+/* ********** HEADER ********** */
+
+header {
+	padding: 0;
+	border-bottom: 3px solid $red;
+	clear: both;
+	
+		h1 {
+		text-indent: -99999em;	
+		}
+		
+			a {
+				border: 0;
+			}
+			
+				@include at-breakpoint($break-large, no media-queries) { 
+					border:none;
+			}
+}
+
+.banner a img {
+	margin-bottom: 1.2em;
+	padding: 0 3%;
+	
+		//lines up logo and subhead a large size
+		@include at-breakpoint($break-large) { 
+			@include span-columns(11, 16)
+	}
+	
+}
+
+#toggle {
+	width: 100%;
+	background: rgba(0,0,0,.5);
+	
+	@include at-breakpoint($break-large, no-mediaqueries) {
+		display: none;
+	}
+}
+
+.toggle {
+	padding: 1em;
+}
+
+a.toggle {
+	display: block;
+	width: 3em;
+	padding: 6px;
+	margin-left: 45%;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url('../img/toggle.png') no-repeat top center;
+	background-color: $red;
+	@include border-bottom-radius(3px);
+}
+
+
+/* ********** SUBHEAD ********** */
+#subhead {
+	background: $offblack;
+	padding: 0 .5em;
+	border-bottom: 5px solid $red;
+	
+		//puts subhead to the right at large screen size
+		@include at-breakpoint($break-large, no-mediaqueries) { 
+			@include span-columns(5 omega, 16);
+			border-bottom: none;
+			padding: 1em;
+			background-color: transparent;
+			
+	}
+	
+	
+}
+
+#subhead ul {
+	list-style-type: none;
+	text-align: center;
+	clear: both;
+	color: white;
+	
+		li {
+			@extend %Cabin-bold;
+			@include adjust-font-size-to(20px);
+			display: inline;
+			margin: 0 5px;
+		}
+		
+			@include at-breakpoint($break-large, no-mediaqueries) {
+				@include adjust-font-size-to(24px);
+			}
+		
+}
+
+#subhead h2 {
+	@extend %Cabin;
+	@include adjust-font-size-to(14px);
+	color: white;
+	text-align: center;
+	@include establish-baseline;
+	text-decoraton: none;
+	
+		&:last-of-type {
+			@include adjust-font-size-to(20px);
+			background: $yellow;
+			padding: 10px;
+			margin: 10px;
+			@include border-radius();
+			color: black;
+			@include pre(1);
+			@include post(1);
+			
+				&:hover {
+					background: darken($yellow, 25%);
+					@include transition-duration(1s);
+					cursor: pointer;
+				}
+		}
+		
+			@include at-breakpoint($break-large, no-mediaqueries) {
+				@include adjust-font-size-to(18px);
+			}
+}
+
+
+/* ********** MAIN NAV ********** */
+
+#mainnav {
+	background-color: $offblack;
+	
+	//display the navigation on the left
+	@include at-breakpoint($break-large, no-mediaqueries) {
+		@include span-columns(5,16);
+			margin-left: 3%;
+			@include single-box-shadow(rgba(0,0,0,.8)inset);
+		}
+}
+
+#mainnav h3 a {
+	color: $yellow;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	@extend %Ultra;
+	@include single-text-shadow($black, 3px, 3px, 0);
+	display: block;
+	padding: 1em;
+	-web-tap-highlight-color: $red;
+	border-bottom: 1px solid $black;
+}
+
+#mainnav h3:last-child {
+	border-bottom: 5px solid $red;
+}
+
+.mopeds, .atv, .dirtbike, .trike, .gokart {
+	background: url('../img/plus.png') no-repeat 97% 50%;
+	
+		&:hover {
+			background: $black url('../img/plus.png') no-repeat 97% 50%;
+			@include transition-duration(1.5s);
+		}
+}
+
+#scooter, #pocketbike, #preowned, #motorcycles, #custombikes {
+	&:hover {
+		background: $black;
+		@include transition-duration(1.5s);
+	}
+}
+
+#mainnav li {
+	margin: 0;
+	display: block;
+	border-bottom: 1px solid $black;
+	
+		a {
+			color: #fff;
+			@extend %Cabin;
+			padding-left: 1.5em;
+			text-decoration: none;
+			display: block;
+			padding: 1em 1.5em;
+			@include adjust-font-size-to(18px);
+		}
+		
+		&:hover, &:active {
+			background-color: $red;
+			@include transition-duration(1.5s);
+		}
+}
+
+/* ********** MAIN CONTENT ********* */
+
+#main {
+	@include span-columns($total-columns);
+	background: $offblack url('../img/diagonal.png') repeat top center;
+	color: $white;
+	clear: both;
+	
+	@include at-breakpoint($break-large, no-mediaqueries) {
+	@include container($total-columns);
+	padding: 1em 0;
+	border-top: 5px solid $red;
+	}
+	
+	 h1 {
+		@include single-text-shadow($offblack, 3px, 3px, 0);
+		@extend %Ultra;
+		@include adjust-font-size-to(28px);
+		color: $yellow;
+		text-align: center;
+		line-height: 1.2;
+		
+			//Make the h1 larger on larger displays
+			@include at-breakpoint($break-large, no-mediaqueries) { 
+				font-size: 3em; 
+				}	
+	}
+
+ 	 h2 {
+		@extend %Cabin-bold;
+		@include adjust-font-size-to(20px);
+		color: $red;
+		text-align: center;
+		line-height: 1.2;
+		margin: .5em 0;
+		
+		//Make the h2 larger on larger displays
+		@include at-breakpoint($break-large, no-mediaqueries) { 
+			font-size: 2em; 
+			}
+		}	
+}
+
+p {
+		margin-top: 1.25em;
+		@extend %Cabin;
+		line-height: 1.5;
+		color: $white;
+}
+		
+.picture {
+	width: 50%;
+	margin-top: 1.2em;
+	border: 3px solid $red;
+	float: left;
+	margin-right: 1em;
+}
+
+#content {
+	@include span-columns($total-columns);
+	padding: 3% 5%;
+	background: rgba(0,0,0,.5);
+	
+	//display the content to the right on large displays
+	@include at-breakpoint($break-large, no-mediaqueries) {
+		@include span-columns(10 omega,16);
+		margin-right: 3%;
+	}
+}
+
+#content .products li {
+	display: block;
+	
+			img {
+				width: 75%;
+				border: 3px solid $red;
+				margin: 1em 0 0 12%;
+			}
+			
+				@include at-breakpoint($break-medium, no-mediaqueries) {
+					width: 50%;
+					float: left;
+				}
+}
+
+#main .caption {
+	clear: both;
+	text-align: center;
+	margin: 0 0 1.5em 0;
+}
+
+p.warranty {
+	text-decoration: none;
+	color: $white;
+	background: rgba(0,0,0,.5);
+	padding: 1em;
+	border-bottom: 1px solid $red;
+	border-top: 1px solid $black;
+	
+		a {
+			display: block;
+			width: 100%;
+			color: $white;
+			text-decoration: none;
+		}
+		
+			&:hover {
+				background: $red;
+				@include transition-duration(1.5s);
+			}
+}
+
+.pdf {
+background: url('../img/pdf.png') no-repeat left center;
+padding-left: 30px;
+line-height: 1em;
+display: block;
+}
+
+
+/* ********** SLIDER ********** */
+#slider-container {
+	@include span-columns($total-columns);
+	border-top: 5px solid $red;
+	background: $black;
+	padding: 1em;
+
+			@include at-breakpoint($break-large, no-mediaqueries) {
+				padding: 1em 7em;
+			}
+}
+
+.flex-container {
+	margin: 0 auto;
+	padding-top: 1em;
+}
+
+
+/* ********** FOOTER ********** */
+footer {
+	@include span-columns($total-columns);
+	background-color: $red;
+	padding: .5em 0;
+}
+
+/*  SECONDARY NAVIGATION  */
+
+#secondarynav {
+	background: $offblack;
+	width: 100%;
+	
+	@include at-breakpoint($break-large, no-mediaqueries) {
+		height: 56px;	
+	}
+}
+
+#secondarynav h3 a {
+	background: $offblack;
+	color: $yellow;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	@extend %Ultra;
+	@include single-text-shadow($offblack, 3px, 3px, 0);
+	display: block;
+	padding: 1em;
+	-web-tap-highlight-color: $red;
+	border-bottom: 1px solid $black;
+	
+		&:hover, &:active{
+			background: $black;
+			@include transition-duration(1.5s);
+		};
+		
+		@include at-breakpoint($break-large, no-mediaqueries) {
+			display: inline;
+			float: left;
+			margin-left: 4em;
+			border-bottom: none;
+			height: 53px;
+		}
+		
+}
+
+
+/*  SOCIAL LINKS */
+
+@import "social/*.png";
+
+#social-links {
+	@include span-columns($total-columns);
+	background: $red;
+	
+	@include at-breakpoint($break-large, no-mediaqueries) {
+		padding-left: 4em;
+	}
+	
+ 		li {
+ 		 margin: .5em;
+		 float: left;
+ 		 }
+
+		a {
+			width: 156px;
+			height: 44px;
+			display: block;
+			text-indent: -9999em;
+		}
+		
+		.facebook 	{ @include social-sprite(facebook); }
+		.scmopedlaw { @include social-sprite(scmopedlaw); }
+		.motofino		{ @include social-sprite(motofino); }
+		.amsoil 		{ @include social-sprite(amsoil); }
+}
+
+
+/* ********** MAP ********** */
+#map_canvas {
+	margin-top: 1em;
+	width: 100%;
+	min-height: 300px;
+	}
+	
+#map_canvas img { 
+	max-width: none; 
+	height: auto;
+	}
